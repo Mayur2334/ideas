@@ -1,0 +1,1952 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="neon">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quantum AI Portfolio | Next-Gen AI Solutions</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Exo+2:wght@300;600&display=swap" rel="stylesheet">
+    <style>
+        /* Quantum Design System */
+        :root {
+            --quantum-primary: #00f0ff;
+            --quantum-secondary: #ff00f0;
+            --quantum-dark: #0a0a20;
+            --quantum-darker: #050510;
+            --quantum-light: #e0e0ff;
+            --quantum-accent: #f0ff00;
+            --quantum-error: #ff0060;
+            --quantum-success: #00ff80;
+            
+            --font-heading: 'Orbitron', sans-serif;
+            --font-body: 'Exo 2', sans-serif;
+            
+            --neon-glow: 0 0 10px rgba(0, 240, 255, 0.8),
+                         0 0 20px rgba(0, 240, 255, 0.6),
+                         0 0 30px rgba(0, 240, 255, 0.4);
+        }
+
+        [data-theme="neon"] {
+            background-color: var(--quantum-darker);
+            color: var(--quantum-light);
+        }
+
+        /* Base Styles */
+        body {
+            font-family: var(--font-body);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            background-color: var(--quantum-darker);
+            color: var(--quantum-light);
+            position: relative;
+        }
+
+        /* Quantum Navigation */
+        .quantum-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 5%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background-color: rgba(10, 10, 32, 0.9);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0, 240, 255, 0.2);
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .nav-logo h1 {
+            font-family: var(--font-heading);
+            font-size: 1.8rem;
+            margin: 0;
+            background: linear-gradient(90deg, var(--quantum-primary), var(--quantum-secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .quantum-particle {
+            width: 12px;
+            height: 12px;
+            background-color: var(--quantum-primary);
+            border-radius: 50%;
+            box-shadow: var(--neon-glow);
+            animation: pulse 2s infinite alternate;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--quantum-light);
+            text-decoration: none;
+            font-weight: 600;
+            position: relative;
+            padding: 0.5rem 0;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--quantum-primary);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--quantum-primary);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .holographic {
+            text-shadow: 0 0 5px rgba(0, 240, 255, 0.5);
+        }
+
+        .nav-actions {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .nav-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+        }
+
+        .quantum-bar {
+            width: 25px;
+            height: 3px;
+            background-color: var(--quantum-primary);
+            transition: all 0.3s ease;
+        }
+
+        /* Quantum Buttons */
+        .quantum-btn {
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 4px;
+            font-family: var(--font-heading);
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            background: transparent;
+            color: var(--quantum-primary);
+            border: 1px solid var(--quantum-primary);
+            box-shadow: 0 0 10px rgba(0, 240, 255, 0.3);
+        }
+
+        .quantum-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 240, 255, 0.2), transparent);
+            transition: all 0.5s ease;
+            z-index: -1;
+        }
+
+        .quantum-btn:hover::before {
+            left: 100%;
+        }
+
+        .quantum-btn.primary {
+            background: linear-gradient(135deg, var(--quantum-primary), var(--quantum-secondary));
+            color: var(--quantum-dark);
+            border: none;
+        }
+
+        .quantum-btn.secondary {
+            background: transparent;
+            color: var(--quantum-secondary);
+            border: 1px solid var(--quantum-secondary);
+            box-shadow: 0 0 10px rgba(255, 0, 240, 0.3);
+        }
+
+        .quantum-btn.xl {
+            padding: 1.2rem 2.5rem;
+            font-size: 1.1rem;
+        }
+
+        /* Hero Section */
+        .quantum-hero {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            min-height: 100vh;
+            padding: 0 5%;
+            padding-top: 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content h2 {
+            font-family: var(--font-heading);
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .ai-gradient {
+            background: linear-gradient(90deg, var(--quantum-primary), var(--quantum-accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .hero-description {
+            font-size: 1.2rem;
+            margin-bottom: 2.5rem;
+            max-width: 80%;
+            opacity: 0.9;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .hero-visualization {
+            position: relative;
+            height: 100%;
+            width: 100%;
+        }
+
+        .neural-network {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(0,240,255,0.1) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .data-stream {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,50 L100,50" stroke="rgba(0,240,255,0.2)" stroke-width="0.5" vector-effect="non-scaling-stroke"></path></svg>');
+            background-size: 100% 100%;
+            opacity: 0.5;
+        }
+
+        /* Projects Grid */
+        .quantum-projects {
+            padding: 5rem 5%;
+            position: relative;
+        }
+
+        .section-title {
+            font-family: var(--font-heading);
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--quantum-primary), var(--quantum-secondary));
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: rgba(20, 20, 40, 0.7);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0, 240, 255, 0.1);
+            position: relative;
+            z-index: 1;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0, 240, 255, 0.2);
+            border-color: var(--quantum-primary);
+        }
+
+        .project-image {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .project-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to top, rgba(5,5,16,0.9) 0%, transparent 50%);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 1.5rem;
+        }
+
+        .project-tags {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-tag {
+            background: rgba(0, 240, 255, 0.2);
+            color: var(--quantum-primary);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .project-content {
+            padding: 1.5rem;
+        }
+
+        .project-title {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-description {
+            margin-bottom: 1.5rem;
+            opacity: 0.8;
+        }
+
+        .project-stats {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1.5rem;
+        }
+
+        .project-stat {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .stat-value {
+            font-family: var(--font-heading);
+            font-size: 1.2rem;
+            color: var(--quantum-primary);
+        }
+
+        .stat-label {
+            font-size: 0.8rem;
+            opacity: 0.7;
+        }
+
+        .project-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        /* Pricing Matrix */
+        .quantum-pricing {
+            padding: 5rem 5%;
+            background: rgba(10, 10, 32, 0.5);
+            position: relative;
+        }
+
+        .pricing-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }
+
+        .pricing-tab {
+            padding: 0.8rem 2rem;
+            background: transparent;
+            border: 1px solid rgba(0, 240, 255, 0.3);
+            color: var(--quantum-light);
+            font-family: var(--font-heading);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pricing-tab::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 240, 255, 0.1), transparent);
+            transition: all 0.5s ease;
+        }
+
+        .pricing-tab:hover::before {
+            left: 100%;
+        }
+
+        .pricing-tab.active {
+            background: rgba(0, 240, 255, 0.2);
+            border-color: var(--quantum-primary);
+            color: var(--quantum-primary);
+            box-shadow: 0 0 15px rgba(0, 240, 255, 0.3);
+        }
+
+        .pricing-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .pricing-card {
+            background: rgba(20, 20, 40, 0.7);
+            border-radius: 8px;
+            padding: 2rem;
+            border: 1px solid rgba(0, 240, 255, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pricing-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--quantum-primary), var(--quantum-secondary));
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 240, 255, 0.2);
+            border-color: var(--quantum-primary);
+        }
+
+        .pricing-tier {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--quantum-primary);
+        }
+
+        .pricing-price {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(90deg, var(--quantum-primary), var(--quantum-accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .pricing-period {
+            font-size: 1rem;
+            opacity: 0.7;
+        }
+
+        .pricing-features {
+            margin-bottom: 2rem;
+        }
+
+        .pricing-feature {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .pricing-feature i {
+            color: var(--quantum-primary);
+        }
+
+        .pricing-feature.disabled {
+            opacity: 0.5;
+        }
+
+        .pricing-cta {
+            width: 100%;
+        }
+
+        /* AI Terminal */
+        .quantum-terminal {
+            margin: 5rem auto;
+            max-width: 900px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 0 30px rgba(0, 240, 255, 0.2);
+            background: var(--quantum-dark);
+            border: 1px solid rgba(0, 240, 255, 0.3);
+        }
+
+        .terminal-header {
+            display: flex;
+            align-items: center;
+            padding: 0.8rem 1.5rem;
+            background: rgba(10, 10, 30, 0.9);
+            border-bottom: 1px solid rgba(0, 240, 255, 0.2);
+        }
+
+        .terminal-dots {
+            display: flex;
+            gap: 0.5rem;
+            margin-right: 1rem;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .dot.red {
+            background: #ff5f56;
+        }
+
+        .dot.yellow {
+            background: #ffbd2e;
+        }
+
+        .dot.green {
+            background: #27c93f;
+        }
+
+        .terminal-title {
+            font-family: var(--font-heading);
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        .terminal-body {
+            padding: 1.5rem;
+            font-family: monospace;
+            min-height: 300px;
+            max-height: 400px;
+            overflow-y: auto;
+            background: rgba(5, 5, 15, 0.7);
+        }
+
+        .terminal-output p {
+            margin: 0 0 0.5rem 0;
+            color: var(--quantum-primary);
+            line-height: 1.5;
+        }
+
+        .terminal-input {
+            display: flex;
+            align-items: center;
+            margin-top: 1rem;
+            color: var(--quantum-primary);
+        }
+
+        .terminal-input span {
+            margin-right: 0.5rem;
+        }
+
+        .terminal-input input {
+            flex: 1;
+            background: transparent;
+            border: none;
+            color: var(--quantum-primary);
+            font-family: monospace;
+            font-size: 1rem;
+            outline: none;
+            caret-color: var(--quantum-primary);
+        }
+
+        .terminal-input input::placeholder {
+            color: rgba(0, 240, 255, 0.5);
+        }
+
+        /* Contact Section */
+        .quantum-contact {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            padding: 5rem 5%;
+            position: relative;
+        }
+
+        .contact-form {
+            max-width: 600px;
+        }
+
+        .form-group {
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem 0;
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid rgba(0, 240, 255, 0.3);
+            color: var(--quantum-light);
+            font-size: 1rem;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .form-group textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .form-group label {
+            position: absolute;
+            top: 1rem;
+            left: 0;
+            color: rgba(0, 240, 255, 0.7);
+            transition: all 0.3s ease;
+            pointer-events: none;
+        }
+
+        .form-group input:focus ~ label,
+        .form-group input:valid ~ label,
+        .form-group textarea:focus ~ label,
+        .form-group textarea:valid ~ label {
+            top: -0.5rem;
+            font-size: 0.8rem;
+            color: var(--quantum-primary);
+        }
+
+        .form-underline {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--quantum-primary);
+            transition: width 0.3s ease;
+        }
+
+        .form-group input:focus ~ .form-underline,
+        .form-group textarea:focus ~ .form-underline {
+            width: 100%;
+        }
+
+        .contact-hologram {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hologram-container {
+            position: relative;
+            width: 300px;
+            height: 300px;
+        }
+
+        .hologram-circle {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(0,240,255,0.1) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+        }
+
+        .hologram-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80%;
+            height: 80%;
+            border-radius: 50%;
+            overflow: hidden;
+            box-shadow: 0 0 30px rgba(0, 240, 255, 0.3);
+        }
+
+        .hologram-content img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Footer */
+        .quantum-footer {
+            background: rgba(5, 5, 15, 0.9);
+            padding: 5rem 5% 2rem;
+            position: relative;
+            border-top: 1px solid rgba(0, 240, 255, 0.1);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-about h4 {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--quantum-primary);
+        }
+
+        .footer-about p {
+            margin-bottom: 1.5rem;
+            opacity: 0.8;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-links a {
+            color: var(--quantum-light);
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--quantum-primary);
+            transform: translateY(-3px);
+        }
+
+        .footer-links h4 {
+            font-family: var(--font-heading);
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            color: var(--quantum-primary);
+        }
+
+        .footer-links ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: var(--quantum-light);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            opacity: 0.8;
+        }
+
+        .footer-links a:hover {
+            color: var(--quantum-primary);
+            opacity: 1;
+            padding-left: 5px;
+        }
+
+        .footer-newsletter h4 {
+            font-family: var(--font-heading);
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            color: var(--quantum-primary);
+        }
+
+        .footer-newsletter p {
+            margin-bottom: 1.5rem;
+            opacity: 0.8;
+        }
+
+        .newsletter-form {
+            display: flex;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            padding: 0.8rem;
+            background: rgba(0, 240, 255, 0.1);
+            border: none;
+            border-radius: 4px 0 0 4px;
+            color: var(--quantum-light);
+            outline: none;
+        }
+
+        .newsletter-form button {
+            padding: 0 1.2rem;
+            background: var(--quantum-primary);
+            color: var(--quantum-dark);
+            border: none;
+            border-radius: 0 4px 4px 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .newsletter-form button:hover {
+            background: var(--quantum-accent);
+        }
+
+        .footer-copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(0, 240, 255, 0.1);
+            opacity: 0.7;
+            font-size: 0.9rem;
+        }
+
+        .legal-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .legal-links a {
+            color: var(--quantum-light);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .legal-links a:hover {
+            color: var(--quantum-primary);
+        }
+
+        /* Quantum Particles Background */
+        .quantum-particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* Animations */
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(1.2);
+                opacity: 0.7;
+            }
+        }
+
+        @keyframes rotate {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .typing-animation {
+            position: relative;
+            width: fit-content;
+        }
+
+        .typing-animation::after {
+            content: '|';
+            position: absolute;
+            right: -10px;
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0;
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .quantum-hero {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .hero-description {
+                max-width: 100%;
+                margin-left: auto;
+                margin-right: auto;
+            }
+            
+            .hero-actions {
+                justify-content: center;
+            }
+            
+            .hero-visualization {
+                display: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .nav-actions {
+                display: none;
+            }
+            
+            .nav-toggle {
+                display: flex;
+            }
+            
+            .quantum-hero h2 {
+                font-size: 2.5rem;
+            }
+            
+            .quantum-contact {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-hologram {
+                display: none;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-actions {
+                flex-direction: column;
+            }
+            
+            .pricing-tabs {
+                flex-wrap: wrap;
+            }
+            
+            .project-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Modal Styles */
+        .quantum-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(5, 5, 15, 0.9);
+            backdrop-filter: blur(5px);
+            z-index: 2000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+        }
+
+        .modal-content {
+            background: var(--quantum-dark);
+            border: 1px solid var(--quantum-primary);
+            border-radius: 8px;
+            max-width: 800px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 0 30px rgba(0, 240, 255, 0.3);
+        }
+
+        .modal-header {
+            padding: 1.5rem;
+            border-bottom: 1px solid rgba(0, 240, 255, 0.2);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-header h4 {
+            font-family: var(--font-heading);
+            margin: 0;
+            color: var(--quantum-primary);
+        }
+
+        .modal-close {
+            background: none;
+            border: none;
+            color: var(--quantum-primary);
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        .modal-body {
+            padding: 1.5rem;
+        }
+
+        .modal-image {
+            height: 300px;
+            background-size: cover;
+            background-position: center;
+            border-radius: 4px;
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-details p {
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-stats {
+            margin-bottom: 2rem;
+        }
+
+        .modal-stats h5 {
+            font-family: var(--font-heading);
+            color: var(--quantum-primary);
+            margin-bottom: 1rem;
+        }
+
+        .modal-stats ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .modal-stats li {
+            margin-bottom: 0.5rem;
+            display: flex;
+        }
+
+        .modal-stats strong {
+            min-width: 120px;
+            display: inline-block;
+            color: var(--quantum-primary);
+        }
+
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tech-tag {
+            background: rgba(0, 240, 255, 0.2);
+            color: var(--quantum-primary);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .pricing-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .pricing-option {
+            background: rgba(20, 20, 40, 0.7);
+            padding: 1.5rem;
+            border-radius: 4px;
+            border: 1px solid rgba(0, 240, 255, 0.2);
+        }
+
+        .pricing-option h5 {
+            font-family: var(--font-heading);
+            color: var(--quantum-primary);
+            margin-top: 0;
+        }
+
+        .pricing-option .price {
+            font-size: 2rem;
+            font-weight: bold;
+            margin: 1rem 0;
+            color: var(--quantum-accent);
+        }
+
+        .pricing-option p {
+            margin-bottom: 1.5rem;
+            opacity: 0.8;
+        }
+
+        .modal-footer {
+            padding: 1.5rem;
+            border-top: 1px solid rgba(0, 240, 255, 0.2);
+            display: flex;
+            justify-content: flex-end;
+            gap: 1rem;
+        }
+
+        /* Theme Switcher */
+        .theme-switcher {
+            position: fixed;
+            bottom: 1rem;
+            right: 1rem;
+            z-index: 1000;
+            background: rgba(10, 10, 32, 0.8);
+            border-radius: 4px;
+            padding: 0.5rem;
+            display: flex;
+            gap: 0.5rem;
+            border: 1px solid rgba(0, 240, 255, 0.3);
+        }
+
+        .theme-switcher button {
+            background: rgba(0, 240, 255, 0.1);
+            border: none;
+            color: var(--quantum-light);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .theme-switcher button.active {
+            background: var(--quantum-primary);
+            color: var(--quantum-dark);
+        }
+    </style>
+</head>
+<body>
+    <!-- Quantum Navigation -->
+    <nav class="quantum-nav">
+        <div class="nav-logo">
+            <span class="quantum-particle"></span>
+            <h1>QUANTUM<span>AI</span></h1>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#projects" class="holographic">Projects</a></li>
+            <li><a href="#pricing" class="holographic">Pricing</a></li>
+            <li><a href="#about" class="holographic">About</a></li>
+            <li><a href="#contact" class="holographic">Contact</a></li>
+        </ul>
+        <div class="nav-actions">
+            <button class="quantum-btn">Login</button>
+            <button class="quantum-btn primary">Sign Up</button>
+        </div>
+        <div class="nav-toggle">
+            <div class="quantum-bar"></div>
+            <div class="quantum-bar"></div>
+            <div class="quantum-bar"></div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="quantum-hero">
+        <div class="hero-content">
+            <h2 class="typing-animation">Crafting the Future with <span class="ai-gradient">Artificial Intelligence</span></h2>
+            <p class="hero-description">Quantum AI delivers cutting-edge solutions that redefine possibilities across industries with our proprietary neural architectures.</p>
+            <div class="hero-actions">
+                <button class="quantum-btn xl primary">Explore Projects</button>
+                <button class="quantum-btn xl secondary">Request Demo</button>
+            </div>
+        </div>
+        <div class="hero-visualization">
+            <div class="neural-network"></div>
+            <div class="data-stream"></div>
+        </div>
+    </section>
+
+    <!-- Projects Grid -->
+    <section id="projects" class="quantum-projects">
+        <h3 class="section-title">AI Project Portfolio</h3>
+        <div class="project-grid">
+            <!-- Project cards will be dynamically generated by JS -->
+        </div>
+    </section>
+
+    <!-- Pricing Matrix -->
+    <section id="pricing" class="quantum-pricing">
+        <h3 class="section-title">Quantum AI Pricing Matrix</h3>
+        <div class="pricing-tabs">
+            <button class="pricing-tab active" data-tier="starter">Starter</button>
+            <button class="pricing-tab" data-tier="professional">Professional</button>
+            <button class="pricing-tab" data-tier="enterprise">Enterprise</button>
+            <button class="pricing-tab" data-tier="custom">Custom AI</button>
+        </div>
+        <div class="pricing-cards">
+            <!-- Pricing cards will be dynamically generated by JS -->
+        </div>
+    </section>
+
+    <!-- AI Demo Terminal -->
+    <section class="quantum-terminal">
+        <div class="terminal-header">
+            <div class="terminal-dots">
+                <span class="dot red"></span>
+                <span class="dot yellow"></span>
+                <span class="dot green"></span>
+            </div>
+            <div class="terminal-title">Quantum AI Interaction Console</div>
+        </div>
+        <div class="terminal-body">
+            <div class="terminal-output">
+                <p>> Initializing Quantum AI interface...</p>
+                <p>> Loading neural parameters...</p>
+                <p>> Ready for interaction</p>
+            </div>
+            <div class="terminal-input">
+                <span>> </span>
+                <input type="text" placeholder="Ask our AI anything..." id="ai-prompt">
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="quantum-contact">
+        <div class="contact-form">
+            <h3 class="section-title">Initiate Quantum Connection</h3>
+            <form id="ai-contact-form">
+                <div class="form-group">
+                    <input type="text" id="name" required>
+                    <label for="name">Your Name</label>
+                    <div class="form-underline"></div>
+                </div>
+                <div class="form-group">
+                    <input type="email" id="email" required>
+                    <label for="email">Quantum Link (Email)</label>
+                    <div class="form-underline"></div>
+                </div>
+                <div class="form-group">
+                    <textarea id="message" required></textarea>
+                    <label for="message">Transmission Content</label>
+                    <div class="form-underline"></div>
+                </div>
+                <button type="submit" class="quantum-btn xl primary">Transmit Message</button>
+            </form>
+        </div>
+        <div class="contact-hologram">
+            <div class="hologram-container">
+                <div class="hologram-circle"></div>
+                <div class="hologram-content">
+                    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIiB2aWV3Qm94PSIwIDAgMjAwIDIwMCI+PGNpcmNsZSBjeD0iMTAwIiBjeT0iMTAwIiByPSI4MCIgZmlsbD0iIzAwZjBmZiIvPjxjaXJjbGUgY3g9IjEwMCIgY3k9IjEwMCIgcj0iNjAiIGZpbGw9IiNmMGZmMDAiLz48Y2lyY2xlIGN4PSIxMDAiIGN5PSIxMDAiIHI9IjQwIiBmaWxsPSIjZmYwMGYwIi8+PC9zdmc+" alt="AI Hologram">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quantum Footer -->
+    <footer class="quantum-footer">
+        <div class="footer-grid">
+            <div class="footer-about">
+                <h4>Quantum AI</h4>
+                <p>Pushing the boundaries of artificial intelligence through quantum-inspired algorithms and neural architectures.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-github"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h4>Quantum Links</h4>
+                <ul>
+                    <li><a href="#">Research Papers</a></li>
+                    <li><a href="#">API Documentation</a></li>
+                    <li><a href="#">GitHub Repos</a></li>
+                    <li><a href="#">AI Ethics</a></li>
+                </ul>
+            </div>
+            <div class="footer-newsletter">
+                <h4>Join Our Neural Network</h4>
+                <p>Subscribe to our quantum newsletter for the latest in AI research and projects.</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Your quantum email">
+                    <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                </form>
+            </div>
+        </div>
+        <div class="footer-copyright">
+            <p>© 2023 Quantum AI. All rights reserved. A subsidiary of Singularity Holdings.</p>
+            <div class="legal-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">AI Ethics Charter</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Quantum Particles Background -->
+    <div class="quantum-particles"></div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Project data with pricing information
+            const projects = [
+                {
+                    id: 1,
+                    title: "Neural Quantum Processor",
+                    description: "A revolutionary quantum-inspired neural network architecture that achieves 98% accuracy in complex pattern recognition tasks.",
+                    image: "https://source.unsplash.com/random/600x400/?quantum,ai",
+                    tags: ["Quantum AI", "Neural Networks", "Machine Learning"],
+                    stats: {
+                        accuracy: "98.7%",
+                        speed: "1.2ms",
+                        complexity: "High"
+                    },
+                    pricing: {
+                        starter: "$9,999",
+                        professional: "$29,999",
+                        enterprise: "Custom",
+                        details: "Includes API access, documentation, and basic support"
+                    }
+                },
+                {
+                    id: 2,
+                    title: "Autonomous Decision Matrix",
+                    description: "Self-learning decision system that adapts to dynamic environments in real-time with minimal human intervention.",
+                    image: "https://source.unsplash.com/random/600x400/?ai,autonomous",
+                    tags: ["Autonomous Systems", "Reinforcement Learning", "AI"],
+                    stats: {
+                        accuracy: "95.2%",
+                        speed: "0.8ms",
+                        complexity: "Medium"
+                    },
+                    pricing: {
+                        starter: "$7,500",
+                        professional: "$22,500",
+                        enterprise: "Custom",
+                        details: "Includes training module and integration support"
+                    }
+                },
+                {
+                    id: 3,
+                    title: "Cognitive Vision Platform",
+                    description: "Advanced computer vision system that understands context and makes human-like visual interpretations.",
+                    image: "https://source.unsplash.com/random/600x400/?vision,ai",
+                    tags: ["Computer Vision", "Deep Learning", "Neural AI"],
+                    stats: {
+                        accuracy: "99.1%",
+                        speed: "2.1ms",
+                        complexity: "High"
+                    },
+                    pricing: {
+                        starter: "$12,000",
+                        professional: "$35,000",
+                        enterprise: "Custom",
+                        details: "Includes SDK and sample datasets"
+                    }
+                },
+                {
+                    id: 4,
+                    title: "Predictive Analytics Suite",
+                    description: "Forecasting system that predicts trends with 92% accuracy across financial, retail, and industrial domains.",
+                    image: "https://source.unsplash.com/random/600x400/?analytics,data",
+                    tags: ["Predictive Modeling", "Time Series", "Big Data"],
+                    stats: {
+                        accuracy: "92.4%",
+                        speed: "0.5ms",
+                        complexity: "Medium"
+                    },
+                    pricing: {
+                        starter: "$6,500",
+                        professional: "$19,500",
+                        enterprise: "Custom",
+                        details: "Includes dashboard and reporting tools"
+                    }
+                },
+                {
+                    id: 5,
+                    title: "Natural Language Quantum",
+                    description: "Language processing system that understands context, emotion, and subtlety at human levels.",
+                    image: "https://source.unsplash.com/random/600x400/?language,ai",
+                    tags: ["NLP", "Quantum Computing", "Sentiment Analysis"],
+                    stats: {
+                        accuracy: "97.3%",
+                        speed: "1.5ms",
+                        complexity: "Very High"
+                    },
+                    pricing: {
+                        starter: "$15,000",
+                        professional: "$45,000",
+                        enterprise: "Custom",
+                        details: "Includes language packs and API"
+                    }
+                },
+                {
+                    id: 6,
+                    title: "Autonomous Robotics Core",
+                    description: "The brain behind next-gen robotics, enabling complex decision making in physical environments.",
+                    image: "https://source.unsplash.com/random/600x400/?robot,ai",
+                    tags: ["Robotics", "Autonomous Systems", "AI"],
+                    stats: {
+                        accuracy: "96.8%",
+                        speed: "0.3ms",
+                        complexity: "High"
+                    },
+                    pricing: {
+                        starter: "$11,000",
+                        professional: "$33,000",
+                        enterprise: "Custom",
+                        details: "Includes hardware integration kit"
+                    }
+                }
+            ];
+
+            // Pricing tiers data
+            const pricingTiers = {
+                starter: {
+                    name: "Starter",
+                    price: "$9,999",
+                    period: "per project",
+                    description: "Ideal for small teams and individual researchers",
+                    features: [
+                        "Basic API Access",
+                        "Standard Documentation",
+                        "Email Support",
+                        "Community Forum Access",
+                        "Limited Compute Hours",
+                        "Up to 5 Team Members"
+                    ],
+                    cta: "Start with Starter"
+                },
+                professional: {
+                    name: "Professional",
+                    price: "$29,999",
+                    period: "per project",
+                    description: "For growing businesses with advanced needs",
+                    features: [
+                        "Full API Access",
+                        "Advanced Documentation",
+                        "Priority Email Support",
+                        "Dedicated Account Manager",
+                        "Extended Compute Hours",
+                        "Up to 20 Team Members",
+                        "Basic Training Sessions",
+                        "Monthly Updates"
+                    ],
+                    cta: "Go Professional"
+                },
+                enterprise: {
+                    name: "Enterprise",
+                    price: "Custom",
+                    period: "annual contract",
+                    description: "Tailored solutions for large organizations",
+                    features: [
+                        "Unlimited API Access",
+                        "Premium Documentation",
+                        "24/7 Phone Support",
+                        "Dedicated Engineer",
+                        "Unlimited Compute Hours",
+                        "Unlimited Team Members",
+                        "Custom Training Programs",
+                        "Weekly Updates",
+                        "White Glove Onboarding",
+                        "Custom Model Development",
+                        "SLA Guarantee"
+                    ],
+                    cta: "Contact Sales"
+                },
+                custom: {
+                    name: "Custom AI",
+                    price: "Negotiable",
+                    period: "project-based",
+                    description: "Fully customized AI solutions for unique requirements",
+                    features: [
+                        "Bespoke AI Development",
+                        "Dedicated Research Team",
+                        "Executive Sponsorship",
+                        "Custom Hardware Integration",
+                        "Patent Support",
+                        "Exclusive Licensing",
+                        "Ongoing Maintenance",
+                        "Quarterly Strategy Sessions"
+                    ],
+                    cta: "Discuss Project"
+                }
+            };
+
+            // Generate project cards
+            const projectGrid = document.querySelector('.project-grid');
+            projects.forEach(project => {
+                const projectCard = document.createElement('div');
+                projectCard.className = 'project-card';
+                projectCard.innerHTML = `
+                    <div class="project-image" style="background-image: url('${project.image}')">
+                        <div class="project-overlay">
+                            <div class="project-tags">
+                                ${project.tags.map(tag => `<span class="project-tag">${tag}</span>`).join('')}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h4 class="project-title">${project.title}</h4>
+                        <p class="project-description">${project.description}</p>
+                        <div class="project-stats">
+                            ${Object.entries(project.stats).map(([key, value]) => `
+                                <div class="project-stat">
+                                    <span class="stat-value">${value}</span>
+                                    <span class="stat-label">${key}</span>
+                                </div>
+                            `).join('')}
+                        </div>
+                        <div class="project-actions">
+                            <button class="quantum-btn" data-project="${project.id}" data-action="details">Details</button>
+                            <button class="quantum-btn primary" data-project="${project.id}" data-action="pricing">View Pricing</button>
+                        </div>
+                    </div>
+                `;
+                projectGrid.appendChild(projectCard);
+            });
+
+            // Generate pricing cards
+            const pricingCardsContainer = document.querySelector('.pricing-cards');
+            
+            function generatePricingCards(tier) {
+                pricingCardsContainer.innerHTML = '';
+                const tierData = pricingTiers[tier];
+                
+                const pricingCard = document.createElement('div');
+                pricingCard.className = 'pricing-card';
+                pricingCard.innerHTML = `
+                    <h4 class="pricing-tier">${tierData.name}</h4>
+                    <p class="pricing-description">${tierData.description}</p>
+                    <div class="pricing-price">${tierData.price}</div>
+                    <span class="pricing-period">${tierData.period}</span>
+                    <ul class="pricing-features">
+                        ${tierData.features.map(feature => `
+                            <li class="pricing-feature">
+                                <i class="fas fa-check"></i>
+                                <span>${feature}</span>
+                            </li>
+                        `).join('')}
+                    </ul>
+                    <button class="quantum-btn primary pricing-cta">${tierData.cta}</button>
+                `;
+                pricingCardsContainer.appendChild(pricingCard);
+            }
+
+            // Initialize with starter tier
+            generatePricingCards('starter');
+
+            // Pricing tab switching
+            const pricingTabs = document.querySelectorAll('.pricing-tab');
+            pricingTabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    const tier = this.dataset.tier;
+                    pricingTabs.forEach(t => t.classList.remove('active'));
+                    this.classList.add('active');
+                    generatePricingCards(tier);
+                });
+            });
+
+            // Project modal for details and pricing
+            function showProjectModal(projectId, action) {
+                const project = projects.find(p => p.id == projectId);
+                if (!project) return;
+                
+                const modal = document.createElement('div');
+                modal.className = 'quantum-modal';
+                
+                if (action === 'details') {
+                    modal.innerHTML = `
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4>${project.title}</h4>
+                                <button class="modal-close">&times;</button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="modal-image" style="background-image: url('${project.image}')"></div>
+                                <div class="modal-details">
+                                    <p>${project.description}</p>
+                                    <div class="modal-stats">
+                                        <h5>Performance Metrics</h5>
+                                        <ul>
+                                            ${Object.entries(project.stats).map(([key, value]) => `
+                                                <li><strong>${key}:</strong> ${value}</li>
+                                            `).join('')}
+                                        </ul>
+                                    </div>
+                                    <div class="modal-technologies">
+                                        <h5>Technologies</h5>
+                                        <div class="tech-tags">
+                                            ${project.tags.map(tag => `<span class="tech-tag">${tag}</span>`).join('')}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button class="quantum-btn" data-action="close">Close</button>
+                                <button class="quantum-btn primary" data-action="pricing">View Pricing</button>
+                            </div>
+                        </div>
+                    `;
+                } else if (action === 'pricing') {
+                    modal.innerHTML = `
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4>${project.title} - Pricing</h4>
+                                <button class="modal-close">&times;</button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="pricing-options">
+                                    <div class="pricing-option">
+                                        <h5>Starter</h5>
+                                        <div class="price">${project.pricing.starter}</div>
+                                        <p>${project.pricing.details}</p>
+                                        <button class="quantum-btn">Select</button>
+                                    </div>
+                                    <div class="pricing-option">
+                                        <h5>Professional</h5>
+                                        <div class="price">${project.pricing.professional}</div>
+                                        <p>${project.pricing.details}</p>
+                                        <button class="quantum-btn">Select</button>
+                                    </div>
+                                    <div class="pricing-option">
+                                        <h5>Enterprise</h5>
+                                        <div class="price">${project.pricing.enterprise}</div>
+                                        <p>Custom solutions for large organizations</p>
+                                        <button class="quantum-btn">Contact Us</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button class="quantum-btn" data-action="close">Close</button>
+                                <button class="quantum-btn primary" data-action="contact">Contact Sales</button>
+                            </div>
+                        </div>
+                    `;
+                }
+                
+                document.body.appendChild(modal);
+                document.body.style.overflow = 'hidden';
+                
+                // Close modal
+                modal.addEventListener('click', function(e) {
+                    if (e.target.classList.contains('quantum-modal')) {
+                        document.body.removeChild(modal);
+                        document.body.style.overflow = '';
+                    }
+                });
+                
+                const closeButtons = modal.querySelectorAll('[data-action="close"], .modal-close');
+                closeButtons.forEach(btn => {
+                    btn.addEventListener('click', function() {
+                        document.body.removeChild(modal);
+                        document.body.style.overflow = '';
+                    });
+                });
+                
+                // Switch to pricing from details
+                const pricingButtons = modal.querySelectorAll('[data-action="pricing"]');
+                pricingButtons.forEach(btn => {
+                    btn.addEventListener('click', function() {
+                        document.body.removeChild(modal);
+                        showProjectModal(projectId, 'pricing');
+                    });
+                });
+            }
+
+            // Project action buttons
+            document.addEventListener('click', function(e) {
+                if (e.target.matches('[data-project][data-action]')) {
+                    const projectId = e.target.dataset.project;
+                    const action = e.target.dataset.action;
+                    showProjectModal(projectId, action);
+                }
+            });
+
+            // AI Terminal Interaction
+            const terminalInput = document.getElementById('ai-prompt');
+            const terminalOutput = document.querySelector('.terminal-output');
+            
+            terminalInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    const prompt = this.value.trim();
+                    if (!prompt) return;
+                    
+                    // Add user input to terminal
+                    terminalOutput.innerHTML += `<p>> ${prompt}</p>`;
+                    this.value = '';
+                    
+                    // Simulate AI response
+                    simulateAIResponse(prompt);
+                    
+                    // Scroll to bottom
+                    terminalOutput.scrollTop = terminalOutput.scrollHeight;
+                }
+            });
+            
+            function simulateAIResponse(prompt) {
+                // Show typing indicator
+                const typingIndicator = document.createElement('p');
+                typingIndicator.className = 'ai-typing';
+                typingIndicator.textContent = 'AI is thinking...';
+                terminalOutput.appendChild(typingIndicator);
+                
+                // Scroll to bottom
+                terminalOutput.scrollTop = terminalOutput.scrollHeight;
+                
+                // Simulate processing delay
+                setTimeout(() => {
+                    // Remove typing indicator
+                    terminalOutput.removeChild(typingIndicator);
+                    
+                    // Generate response based on prompt
+                    let response = generateAIResponse(prompt);
+                    
+                    // Add response to terminal
+                    terminalOutput.innerHTML += `<p>> ${response}</p>`;
+                    
+                    // Scroll to bottom
+                    terminalOutput.scrollTop = terminalOutput.scrollHeight;
+                }, 1500);
+            }
+            
+            function generateAIResponse(prompt) {
+                const lowerPrompt = prompt.toLowerCase();
+                
+                if (lowerPrompt.includes('hello') || lowerPrompt.includes('hi')) {
+                    return "Greetings! I'm Quantum AI. How can I assist you with advanced artificial intelligence today?";
+                } else if (lowerPrompt.includes('project') || lowerPrompt.includes('portfolio')) {
+                    return "Our portfolio includes cutting-edge AI projects in quantum neural networks, autonomous systems, computer vision, and predictive analytics. Which area interests you?";
+                } else if (lowerPrompt.includes('price') || lowerPrompt.includes('cost')) {
+                    return "Pricing varies by project scope and licensing model. Our starter packages begin at $9,999, with enterprise solutions available. Would you like detailed pricing for a specific project?";
+                } else if (lowerPrompt.includes('contact') || lowerPrompt.includes('reach')) {
+                    return "You can contact our team through the quantum connection form on this page, or email us directly at contact@quantum-ai.dev. Our response time is typically under 2 hours.";
+                } else if (lowerPrompt.includes('technology') || lowerPrompt.includes('stack')) {
+                    return "We utilize a proprietary blend of quantum-inspired algorithms, deep neural architectures, and reinforcement learning frameworks, all optimized for performance on next-gen hardware.";
+                } else {
+                    // Default responses
+                    const responses = [
+                        "I've analyzed your query through our quantum neural network. Could you elaborate on your specific requirements?",
+                        "Our predictive models indicate you might be interested in our autonomous decision systems. Would you like more information?",
+                        "That's an intriguing question. Our research division has published several papers on related topics. Shall I direct you to our knowledge base?",
+                        "Quantum AI systems are processing your request at 1.2 petaflops. Based on pattern recognition, I recommend exploring our cognitive vision platform.",
+                        "Your input has been vectorized and processed through our 128-dimensional latent space. The most relevant response is: Let's discuss how we can apply AI to your specific needs."
+                    ];
+                    return responses[Math.floor(Math.random() * responses.length)];
+                }
+            }
+
+            // Form submission
+            const contactForm = document.getElementById('ai-contact-form');
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    const name = document.getElementById('name').value;
+                    const email = document.getElementById('email').value;
+                    const message = document.getElementById('message').value;
+                    
+                    // Simulate form submission
+                    const submitBtn = this.querySelector('button[type="submit"]');
+                    submitBtn.disabled = true;
+                    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Transmitting...';
+                    
+                    setTimeout(() => {
+                        submitBtn.innerHTML = '<i class="fas fa-check"></i> Message Sent';
+                        
+                        // Show success message
+                        const successMsg = document.createElement('div');
+                        successMsg.className = 'form-success';
+                        successMsg.innerHTML = `
+                            <i class="fas fa-check-circle"></i>
+                            <p>Quantum transmission successful! Our AI team will respond within 2 hours.</p>
+                        `;
+                        this.parentNode.insertBefore(successMsg, this.nextSibling);
+                        
+                        // Reset form
+                        setTimeout(() => {
+                            this.reset();
+                            submitBtn.disabled = false;
+                            submitBtn.innerHTML = 'Transmit Message';
+                        }, 3000);
+                    }, 2000);
+                });
+            }
+
+            // Theme switcher
+            const themeSwitcher = document.createElement('div');
+            themeSwitcher.className = 'theme-switcher';
+            themeSwitcher.innerHTML = `
+                <button data-theme="neon" class="active">Neon</button>
+                <button data-theme="dark">Dark</button>
+                <button data-theme="light">Light</button>
+            `;
+            document.body.appendChild(themeSwitcher);
+            
+            themeSwitcher.addEventListener('click', function(e) {
+                if (e.target.tagName === 'BUTTON') {
+                    const theme = e.target.dataset.theme;
+                    document.documentElement.setAttribute('data-theme', theme);
+                    
+                    // Update active button
+                    this.querySelectorAll('button').forEach(btn => {
+                        btn.classList.remove('active');
+                    });
+                    e.target.classList.add('active');
+                }
+            });
+
+            // Mobile navigation toggle
+            const navToggle = document.querySelector('.nav-toggle');
+            const navLinks = document.querySelector('.nav-links');
+            
+            if (navToggle) {
+                navToggle.addEventListener('click', function() {
+                    this.classList.toggle('active');
+                    
+                    if (navLinks) {
+                        navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+                    }
+                });
+            }
+
+            // Initialize animations
+            initAnimations();
+        });
+
+        function initAnimations() {
+            // Simple animations that don't require GSAP
+            const animateOnScroll = () => {
+                const elements = document.querySelectorAll('.project-card, .pricing-card, .terminal-header');
+                
+                elements.forEach(element => {
+                    const elementPosition = element.getBoundingClientRect().top;
+                    const screenPosition = window.innerHeight / 1.3;
+                    
+                    if (elementPosition < screenPosition) {
+                        element.style.opacity = '1';
+                        element.style.transform = 'translateY(0)';
+                    }
+                });
+            };
+            
+            // Set initial styles for animation
+            const projectCards = document.querySelectorAll('.project-card');
+            projectCards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                card.style.transition = `opacity 0.5s ease ${index * 0.1}s, transform 0.5s ease ${index * 0.1}s`;
+            });
+            
+            const pricingCards = document.querySelectorAll('.pricing-card');
+            pricingCards.forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            });
+            
+            // Run on load and scroll
+            window.addEventListener('load', animateOnScroll);
+            window.addEventListener('scroll', animateOnScroll);
+            
+            // Typing animation for hero text
+            const heroText = document.querySelector('.typing-animation');
+            if (heroText) {
+                const text = heroText.textContent;
+                heroText.textContent = '';
+                
+                let i = 0;
+                const typing = setInterval(() => {
+                    if (i < text.length) {
+                        heroText.textContent += text.charAt(i);
+                        i++;
+                    } else {
+                        clearInterval(typing);
+                    }
+                }, 50);
+            }
+        }
+
+        // Simple particle system fallback (without Three.js)
+        function initParticlesFallback() {
+            const container = document.querySelector('.quantum-particles');
+            if (!container) return;
+            
+            // Create particles
+            for (let i = 0; i < 100; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                
+                // Random properties
+                const size = Math.random() * 3 + 1;
+                const posX = Math.random() * 100;
+                const posY = Math.random() * 100;
+                const delay = Math.random() * 5;
+                const duration = Math.random() * 10 + 5;
+                
+                // Apply styles
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                particle.style.left = `${posX}%`;
+                particle.style.top = `${posY}%`;
+                particle.style.animationDelay = `${delay}s`;
+                particle.style.animationDuration = `${duration}s`;
+                
+                // Random color
+                const colors = ['#00f0ff', '#ff00f0', '#f0ff00', '#ffffff'];
+                const color = colors[Math.floor(Math.random() * colors.length)];
+                particle.style.backgroundColor = color;
+                particle.style.boxShadow = `0 0 ${size * 2}px ${color}`;
+                
+                container.appendChild(particle);
+            }
+            
+            // Add styles for particles
+            const style = document.createElement('style');
+            style.textContent = `
+                .particle {
+                    position: absolute;
+                    border-radius: 50%;
+                    opacity: 0.7;
+                    animation: float infinite ease-in-out;
+                    pointer-events: none;
+                }
+                
+                @keyframes float {
+                    0%, 100% {
+                        transform: translate(0, 0);
+                    }
+                    25% {
+                        transform: translate(10px, 10px);
+                    }
+                    50% {
+                        transform: translate(-5px, 5px);
+                    }
+                    75% {
+                        transform: translate(5px, -5px);
+                    }
+                }
+            `;
+            document.head.appendChild(style);
+        }
+
+        // Initialize particle system fallback
+        document.addEventListener('DOMContentLoaded', initParticlesFallback);
+    </script>
+</body>
+</html>
